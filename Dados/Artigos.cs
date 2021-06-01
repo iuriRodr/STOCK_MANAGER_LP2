@@ -1,8 +1,12 @@
-﻿using System;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -14,7 +18,6 @@ namespace Dados
     {
         static List<Artigo> artigos = new List<Artigo>();
 
-        // fazer file para guardar isto
         static double spent = 0;
         static double earn = 0;
 
@@ -35,11 +38,11 @@ namespace Dados
 
         #region METODOS
         /// <summary>
-        /// Funçao que adicionar um artigo e guarda, pelos inputs do utilizador
+        /// Funçao que verifica se já existe o artigo e se não existir adicionar um artigo e guarda, pelos inputs do utilizador
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static bool InsereArtigo(Artigo a)
+        public static bool InsertArtigo(Artigo a)
         {
             if (artigos.Contains(a))
             {
@@ -48,26 +51,29 @@ namespace Dados
             a.Id = artigos.Count;
             artigos.Add(a);
 
-            Registo r = new Registo("Comprado",a, a.Quantity);
-            Registos.InsereRegisto(r);
+            Console.WriteLine("\nAdded\n");
+            Registo r = new Registo("Added",a, a.Quantity);
+            Registos.InsertRecord(r);
 
             spent += a.Quantity * a.Retail;
 
             return true;
         }
+
         /// <summary>
-        /// Funçao que mostra o artigo já adicionado
+        /// Funçao que percorre a lista mostrando todos os artigos usando a funçao acima
         /// </summary>
-        public static void MostraArtigos()
+        public static void ShowArtigos()
         {
             foreach (Artigo a in artigos)
             {
-                Artigo.MostraArtigo(a);
+                Artigo.ShowArtigo(a);
             }
             Console.WriteLine("\n\n Models Available: " + artigos.Count);
         }
+
         /// <summary>
-        /// Funçao que percorre a lista mostrando todos os artigos usando a funçao acima
+        /// Funçao que perocura um artigo na lista pelo seu ID
         /// </summary>
         /// <returns></returns>
         public static Artigo SearchArtigoId()
@@ -84,39 +90,18 @@ namespace Dados
             return null;
         }
 
-        /// <summary>
-        /// Funcao que guarda dados da lista de artigos de ficheiro binario
-        /// </summary>
-        //public static void SalvarDados()
-        //{
-        //    Stream file = File.Open("dados.bin", FileMode.Create, FileAccess.ReadWrite);
-        //    BinaryFormatter bfw = new BinaryFormatter();
-        //    bfw.Serialize(file, artigos);
-
-        //    file.Close();
-        //}
-
-        ///// <summary>
-        ///// Funcao que carrega dados da lista de artigos de ficheiro binario
-        ///// </summary>
-        //public static void CarregarDados()
-        //{
-        //    Stream file = File.Open("dados.bin", FileMode.Open, FileAccess.Read);
-        //    BinaryFormatter b = new BinaryFormatter();
-        //    if(file.Length != 0)
-        //        artigos = (List<Artigo>)b.Deserialize(file);
-
-        //    file.Close();
         //}
         ///// <summary>
-        ///// 
+        ///// Funçao que mostra as estatisticas das vendas ( o total gasto, o total vendido e o lucro)
         ///// </summary>
-        public static void ShowStats()
+        public static void ShowStats(object a)
         {
             Console.WriteLine("Total\n----------------\nSpent: " + Spent + "\nEarn: " + Earn + "\n Profit: " + (Earn - Spent));
         }
+
+
         /// <summary>
-        /// 
+        /// Funçao que remove um artigo da lista
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
@@ -128,12 +113,12 @@ namespace Dados
         }
 
 
-        //Ve isto
-        #region Metodos com todas as funcoes de carregar dados e salvar dados
+        
+        #region Funcoes de carregar dados e salvar dados
         /// <summary>
-        /// Funcao que guarda dados da lista de artigos de ficheiro binario
+        /// Funcao que guarda dados da lista de artigos em ficheiro binario
         /// </summary>
-        public static void SalvarDadosLista()
+        public static void SaveDataList()
         {
             Stream file = File.Open("dados.bin", FileMode.Create, FileAccess.ReadWrite);
             BinaryFormatter bfw = new BinaryFormatter();
@@ -145,7 +130,7 @@ namespace Dados
         /// <summary>
         /// Funcao que carrega dados da lista de artigos de ficheiro binario
         /// </summary>
-        public static void CarregarDadosLista()
+        public static void LoadDataList()
         {
             Stream file = File.Open("dados.bin", FileMode.Open, FileAccess.Read);
             BinaryFormatter b = new BinaryFormatter();
@@ -154,7 +139,11 @@ namespace Dados
 
             file.Close();
         }
-        public static void SalvarDadosEarn()
+
+        /// <summary>
+        /// Funcao que guarda o total vendido de artigos em ficheiro binario
+        /// </summary>
+        public static void SaveDataEarn()
         {
             Stream file = File.Open("dadosEarn.bin", FileMode.Create, FileAccess.ReadWrite);
             BinaryFormatter bfw = new BinaryFormatter();
@@ -162,7 +151,11 @@ namespace Dados
 
             file.Close();
         }
-        public static void CarregarDadosEarn()
+
+        /// <summary>
+        /// Funcao que carrega o total vendido de artigos de um ficheiro binario
+        /// </summary>
+        public static void LoadDataEarn()
         {
             Stream file = File.Open("dadosEarn.bin", FileMode.Open, FileAccess.Read);
             BinaryFormatter b = new BinaryFormatter();
@@ -171,7 +164,11 @@ namespace Dados
 
             file.Close();
         }
-        public static void SalvarDadosSpent()
+
+        /// <summary>
+        /// Funcao que guarda o total gasto em  ficheiro binario
+        /// </summary>
+        public static void SaveDataSpent()
         {
             Stream file = File.Open("dadosSpent.bin", FileMode.Create, FileAccess.ReadWrite);
             BinaryFormatter bfw = new BinaryFormatter();
@@ -179,7 +176,11 @@ namespace Dados
 
             file.Close();
         }
-        public static void CarregarDadosSpent()
+
+        /// <summary>
+        /// Funcao que carrega o total gasto de um ficheiro binario
+        /// </summary>
+        public static void LoadDataSpent()
         {
             Stream file = File.Open("dadosSpent.bin", FileMode.Open, FileAccess.Read);
             BinaryFormatter b = new BinaryFormatter();
@@ -190,20 +191,28 @@ namespace Dados
         }
         #endregion
 
-        public static void SalvarDados()
+
+        /// <summary>
+        /// Funcao que chama todas as funçoes que salvam dados em ficheiros
+        /// </summary>
+        public static void SaveData()
         {
-            Artigos.SalvarDadosLista();
-            Artigos.SalvarDadosEarn();
-            Artigos.SalvarDadosSpent();
-            Registos.SalvarDadosRegistos();
+            SaveDataList();
+            SaveDataEarn();
+            SaveDataSpent();
+            Registos.SaveDataRecord();
         }
 
-        public static void CarregarDados()
+
+        /// <summary>
+        /// Funçao que chama todas as funçoes que carregam dados 
+        /// </summary>
+        public static void LoadData()
         {
-            Artigos.CarregarDadosLista();
-            Artigos.CarregarDadosEarn();
-            Artigos.CarregarDadosSpent();
-            Registos.CarregarDadosRegistos();
+            LoadDataList();
+            LoadDataEarn();
+            LoadDataSpent();
+            Registos.LoadDataRecord();
         }
 
 

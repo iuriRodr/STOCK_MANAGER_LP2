@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excecoes", "Excecoes\Exceco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menus", "Menus\Menus.csproj", "{8AFDD746-DFD3-4653-A985-AD812008E663}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BR", "BR\BR.csproj", "{9CD48634-ADA7-4B55-A153-89C484435976}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8AFDD746-DFD3-4653-A985-AD812008E663}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AFDD746-DFD3-4653-A985-AD812008E663}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AFDD746-DFD3-4653-A985-AD812008E663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CD48634-ADA7-4B55-A153-89C484435976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD48634-ADA7-4B55-A153-89C484435976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD48634-ADA7-4B55-A153-89C484435976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD48634-ADA7-4B55-A153-89C484435976}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

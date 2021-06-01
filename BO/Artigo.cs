@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+
+using System;
 using Excecoes;
 using Dados;
 
@@ -85,19 +88,20 @@ namespace BO
 
         #region METODOS
         /// <summary>
-        /// 
+        /// Adiciona um artigo á lista
         /// </summary>
         /// <param name="a"></param>
-        /// <returns></returns>
+        /// <returns></returns> o artigo adicionado
+
         public static Artigo AddArtigo(Artigo a)
             {
-                Console.WriteLine("\nType your choice 1:");
+                Console.WriteLine("\nType your choice:");
                 Console.WriteLine("\n1- Acessorie / 2-Hoodie / 3-Sneaker / 4-TEE\n");
                 int typeshow = int.Parse(Console.ReadLine());
-                if (typeshow < 1 || typeshow > 4) throw new ExcecaoInteirosAbaixo();
+                if (typeshow < 1 || typeshow > 4) throw new ExceptionInt();
 
 
-                switch (typeshow)  // adicionar enum TYPE
+                switch (typeshow) 
                 {
                     case 1:
                         a.Type = TYPE.Acessorie;
@@ -126,27 +130,65 @@ namespace BO
                 a.Model = Console.ReadLine();
 
                 Console.WriteLine("\nSize : ");
-                a.Size = Console.ReadLine();
+                a.Size = Console.ReadLine(); 
+            
+                bool teste = false;
+                do
+                {
+                    int aux;
+                    Console.WriteLine("\nRetail : ");
+                    string aux4 = Console.ReadLine();
+                    if (int.TryParse(aux4, out aux))
+                    {
+                        if (aux >= 0)
+                        {
+                            teste = true;
+                            a.Retail = aux;
+                        }
+                    }
+                } while (teste == false);
 
-                Console.WriteLine("\nRetail : ");
-                a.Retail = double.Parse(Console.ReadLine());
-                if (a.Retail < 0) throw new Exception("Input menor que 0");
 
-                Console.WriteLine("\nResell : ");
-                a.Resell = double.Parse(Console.ReadLine());
-                if (a.Resell < 0) throw new ExcecaoInteirosAbaixo();
+                bool teste2 = false;
+                do
+                {
+                    int aux;
+                    Console.WriteLine("\nResell : ");
+                    string aux4 = Console.ReadLine();
+                    if (int.TryParse(aux4, out aux))
+                    {
+                        if (aux >= 0)
+                        {
+                            teste2 = true;
+                            a.Resell = aux;
+                        }
+                    }
+                } while (teste2 == false);
 
-                Console.WriteLine("\nQuantity : ");
-                a.Quantity = Int32.Parse(Console.ReadLine());
-                if (a.Quantity < 0) throw new ExcecaoInteirosAbaixo();
+                bool teste3 = false;
+                do
+                {
+                    int aux;
+                    Console.WriteLine("\nQuantity : ");
+                    string aux4 = Console.ReadLine();
+                    if (int.TryParse(aux4, out aux))
+                    {
+                        if (aux >= 0)
+                        {
+                            teste3 = true;
+                            a.Quantity = aux;
+                        }
+                    }
+                } while (teste3 == false);
 
-            return a;
-        }
+                return a;
+            }
+
         /// <summary>
-        /// Funçao que verifica se já existe o artigo, se nao existir adiciona
+        /// Funçao que mostra o artigos em stock
         /// </summary>
         /// <param name="artigo"></param>
-        public static void MostraArtigo(Artigo artigo)
+        public static void ShowArtigo(Artigo artigo)
         {
             Console.WriteLine("- - - - - - - - - - - - - -");
             Console.WriteLine("Id : " + artigo.Id);
@@ -157,9 +199,6 @@ namespace BO
             Console.WriteLine("Quantity:" + artigo.Quantity);
             Console.WriteLine("Retail : " + artigo.Retail);
             Console.WriteLine("Resell : " + artigo.Resell);
-            Console.WriteLine("- - - - - - - - - - - - - -");
-            Console.WriteLine("- - - - -  STATS -  - - - -");
-            Console.WriteLine("Profit : " + artigo.Profit);
             Console.WriteLine("- - - - - - - - - - - - - -");
 
         }
@@ -187,6 +226,7 @@ namespace BO
                     Console.WriteLine("\nType: ");
                     Console.WriteLine("\n1- Acessorie / 2-Hoodie / 3-Sneaker / 4-TEE\n");
                     int typeshow = int.Parse(Console.ReadLine());
+                    if (typeshow < 1 || typeshow > 4) throw new ExceptionInt();
                     switch (typeshow)
                     {
                         case 1:
@@ -224,24 +264,64 @@ namespace BO
                     Console.WriteLine("\nSize : ");
                     a.Size = Console.ReadLine();
                     break;
-                case 5:
 
-                    Console.WriteLine("\nQuantity : ");
-                    a.Quantity = int.Parse(Console.ReadLine());
+                case 5:
+                    bool teste = false;
+                    do
+                    {
+                        int aux;
+                        Console.WriteLine("\nQuantity : ");
+                        string aux1 = Console.ReadLine();
+                        if (int.TryParse(aux1, out aux))
+                        {
+                            if (aux >= 0)
+                            {
+                                teste = true;
+                                a.Quantity = aux;
+                            }
+                        }
+                    } while (teste == false);
                     break;
 
+                   
                 case 6:
-                    Console.WriteLine("\nRetail : ");
-                    a.Retail = double.Parse(Console.ReadLine());
+                    bool teste1 = false;
+                    do
+                    {
+                        int aux;
+                        Console.WriteLine("\nRetail : ");
+                        string aux1 = Console.ReadLine();
+                        if (int.TryParse(aux1, out aux))
+                        {
+                            if (aux >= 0)
+                            {
+                                teste1 = true;
+                                a.Retail = aux;
+                            }
+                        }
+                    } while (teste1 == false);
                     break;
 
                 case 7:
-                    Console.WriteLine("\nResell : ");
-                    a.Resell = double.Parse(Console.ReadLine());
+                    bool teste2 = false;
+                    do
+                    {
+                        int aux;
+                        Console.WriteLine("\nResell : ");
+                        string aux1 = Console.ReadLine();
+                        if (int.TryParse(aux1, out aux))
+                        {
+                            if (aux >= 0)
+                            {
+                                teste2 = true;
+                                a.Resell = aux;
+                            }
+                        }
+                    } while (teste2 == false);
                     break;
 
                 default:
-                    Console.WriteLine("Opção inválida");
+                    Console.WriteLine("Option invalid");
                     break;
             }
             return true;
@@ -249,28 +329,30 @@ namespace BO
 
         }
         /// <summary>
-        /// 
+        /// Funçao que vende o artigo, se o stock ao fim da venda for 0, é removido da lista de artigos
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
         public static bool Sell(Artigo a)
         {
-            Console.WriteLine("Quantidade disponivel: " + a.Quantity);
-            Console.WriteLine("Quantos deseja vender: ");
+            Console.WriteLine("Quantity Available: " + a.Quantity);
+            Console.WriteLine("Quatity To Sell: ");
             int x = int.Parse(Console.ReadLine());
+            if (x < 0) throw new Exception("Invalid imput (must be >0)");
 
             if (x > a.Quantity) return false;
 
             a.Quantity -= x;
-            Registo r = new Registo("Vendido", a, x);
-            Registos.InsereRegisto(r);
+            Console.WriteLine("\nItem Sold");
+            Registo r = new Registo("Sold", a, x);
+            Registos.InsertRecord(r);
 
             Artigos.Earn += x * a.Resell;
 
             if (a.Quantity == 0)
             {
-                if (Artigos.RemoveArtigo(a) == true) Console.WriteLine("Artigo removido");
-                else Console.WriteLine("Erro ao remover artigo!!!");
+                if (Artigos.RemoveArtigo(a) == true) Console.WriteLine("Sold, Out of stock");
+                else Console.WriteLine("Something went wrong!!!");
             }
 
             return true;

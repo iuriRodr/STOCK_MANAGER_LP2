@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+
+using System;
+
 
 namespace Excecoes
 {
-    public class ExcecaoInteirosAbaixo : ApplicationException
+
+    public class ExceptionInt : ApplicationException
     {
-        public ExcecaoInteirosAbaixo() : base("O numero introduzido fora dos limites") { }
-        public ExcecaoInteirosAbaixo(string s) : base(s) { }
-        public ExcecaoInteirosAbaixo(string s, Exception e)
+        public ExceptionInt() : base("Number out of limits") { }
+        public ExceptionInt(string s) : base(s) { }
+        public ExceptionInt(string s, Exception e)
         {
-            throw new ExcecaoInteirosAbaixo(e.Message + " - " + s);
+            throw new ExceptionInt(e.Message + " - " + s);
         }
     }
 }

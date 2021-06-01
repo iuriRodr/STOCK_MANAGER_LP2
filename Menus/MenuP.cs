@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+using System;
 using BO;
-using Dados;
+using BR;
 using Excecoes;
 
 namespace Menus
@@ -12,9 +14,9 @@ namespace Menus
     public class MenuP
     {
         /// <summary>
-        /// 
+        /// Funçao que apresenta o menu inicial ao utilizador
         /// </summary>
-        public static void TextoMenu1()
+        public static void TextMenu1()
         {
             Console.WriteLine(" Choose: ");
             Console.WriteLine("\n1 - Add ");
@@ -25,10 +27,12 @@ namespace Menus
             Console.WriteLine("\n6 - Sell");
             Console.WriteLine("\n0 - Exit");
             Console.WriteLine("\n- - - - - - - - - - - - - - - - -");
-            Console.WriteLine("\nOpcion: ");
+            Console.WriteLine("\nOption: ");
         }
+
         /// <summary>
-        /// Menu Inicial
+        /// Menu Inicial e as suas opçoes com as respetivas funcionalidades
+        /// 
         /// </summary>
         /// <param name="op"></param>
         public static void OpMenu(int op)
@@ -41,20 +45,19 @@ namespace Menus
                 {
                     case 1:
                         Console.Clear();
-                        a = Artigo.AddArtigo(a);
+                        a = Regras.AddArt(a);
 
-
-                        if (a != null) Artigos.InsereArtigo(a);
+                        if (a != null) Regras.InsertArt(a);
                         Console.Clear();
                         break;
 
                     case 2:
                         Console.Clear();
-                        a = Artigos.SearchArtigoId();
+                        a = Regras.Search();
                         Console.Clear();
                         if (a != null)
                         {
-                            Artigo.EditArtigo(a);
+                            Regras.EditArtt(a);
                         }
                         else
                         {
@@ -65,32 +68,32 @@ namespace Menus
 
                     case 3:
                         Console.Clear();
-                        Artigos.MostraArtigos();
+                        Regras.ShowArt();
                         Console.ReadKey();
                         Console.Clear();
                         break;
 
                     case 4:
                         Console.Clear();
-                        Artigos.ShowStats();
+                        Regras.ShowStat(a);           
                         Console.ReadKey();
                         Console.Clear();
                         break;
 
                     case 5:
                         Console.Clear();
-                        Registos.MostraRegistos();
+                        Regras.ShowRecord();
                         Console.ReadKey();
                         Console.Clear();
                         break;
 
                     case 6:
                         Console.Clear();
-                        a = Artigos.SearchArtigoId();
+                        a = Regras.Search();
                         Console.Clear();
                         if (a != null)
                         {
-                            Artigo.Sell(a);
+                            Regras.SellArt(a);
                         }
                         else
                         {
@@ -115,7 +118,7 @@ namespace Menus
                         break;
                 }
             }
-            catch (ExcecaoInteirosAbaixo e)
+            catch (ExceptionInt e)
             {
                 Console.Clear();
                 Console.WriteLine(e.Message);

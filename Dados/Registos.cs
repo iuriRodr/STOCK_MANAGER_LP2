@@ -1,8 +1,12 @@
-﻿using System;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BO;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -14,7 +18,7 @@ namespace Dados
     public class Registo
     {
         string info;
-        string estado;
+        string state;
         double resell;
         double retail;
         int quantity;
@@ -23,10 +27,10 @@ namespace Dados
 
         #region Construtor
 
-        public Registo(string estado, Artigo a, int quantity) 
+        public Registo(string state, Artigo a, int quantity) 
         {
             this.info = a.Brand + a.Model;
-            this.estado = estado;
+            this.state = state;
             this.resell = a.Resell;
             this.retail = a.Retail;
             this.quantity = quantity;
@@ -43,10 +47,10 @@ namespace Dados
             get => info;
             set => info = value;
         }
-        public string Estado
+        public string State
         {
-            get => estado;
-            set => estado = value;
+            get => state;
+            set => state = value;
         }
         public double Retail
         {
@@ -66,11 +70,16 @@ namespace Dados
         }
         #endregion
 
-        public static void MostrarRegisto(Registo r)
+
+        /// <summary>
+        /// Funçao que Mostra o registo de um artigo
+        /// </summary>
+        /// <param name="r"></param>
+        public static void ShowRecord(Registo r)
         {
             Console.WriteLine("- - - - - - - - - - - - - -");
             Console.WriteLine("Info : " + r.Info);
-            Console.WriteLine("Estado : " + r.Estado);
+            Console.WriteLine("State : " + r.state);
             Console.WriteLine("Resell : " + r.Resell);
             Console.WriteLine("Retail : " + r.Retail);
             Console.WriteLine("Quantity : " + r.quantity);
@@ -93,7 +102,13 @@ namespace Dados
 
         #endregion
 
-        public static bool InsereRegisto(Registo r)
+
+        /// <summary>
+        /// Funçao que insere um registo de um artigo
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public static bool InsertRecord(Registo r)
         {
             if (registos.Contains(r) || r == null)
             {
@@ -103,16 +118,23 @@ namespace Dados
             return true;
         }
 
-        public static void MostraRegistos()
+
+        /// <summary>
+        /// Funçao que percorre a lista e mostra todos os registos usando a funçao (Registo.ShowRecord)
+        /// </summary>
+        public static void ShowRecords()
         {
             foreach (Registo r in registos)
             {
-                Registo.MostrarRegisto(r);
+                Registo.ShowRecord(r);
             }
         }
 
 
-        public static void SalvarDadosRegistos()
+        /// <summary>
+        /// Funçao que Salva os dados de resgistos em ficheiro binario
+        /// </summary>
+        public static void SaveDataRecord()
         {
             Stream file = File.Open("dadosRegistos.bin", FileMode.Create, FileAccess.ReadWrite);
             BinaryFormatter bfw = new BinaryFormatter();
@@ -120,7 +142,11 @@ namespace Dados
 
             file.Close();
         }
-        public static void CarregarDadosRegistos()
+
+        /// <summary>
+        /// Funçao que carrega os registos de um ficheiro binario
+        /// </summary>
+        public static void LoadDataRecord()
         {
             Stream file = File.Open("dadosRegistos.bin", FileMode.Open, FileAccess.Read);
             BinaryFormatter b = new BinaryFormatter();
@@ -129,5 +155,7 @@ namespace Dados
 
             file.Close();
         }
+
+       
     }
 }

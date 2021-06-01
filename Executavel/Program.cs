@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//Filipe Alves 19573
+//
+//
+
+
+using System;
 using Menus;
-using Dados;
-/// <summary>
-/// comentar tudo
-/// diagrama
-/// fazer files dos dois atributos + registos
-/// fazer opcao de menu de ordenar alguma lista
-/// </summary>
+using BR;
+
+
 namespace BO
 {
     class Program // main
@@ -18,20 +17,21 @@ namespace BO
         static void Main(string[] args)
         {
             int op;
-            Artigos.CarregarDados();
+            Regras.LoadAllData();
 
-            MenuP.TextoMenu1();
+            MenuP.TextMenu1();
             op = int.Parse(Console.ReadLine());
             MenuP.OpMenu(op);
 
             while (op != 0)
             {
-                MenuP.TextoMenu1();
+                MenuP.TextMenu1();
                 op = int.Parse(Console.ReadLine());
                 MenuP.OpMenu(op);
             }
 
-            Artigos.SalvarDados();
+            Regras.SaveAllData();
+
         }
     }
 }
