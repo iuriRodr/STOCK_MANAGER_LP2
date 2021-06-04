@@ -51,7 +51,6 @@ namespace Dados
             a.Id = artigos.Count;
             artigos.Add(a);
 
-            Console.WriteLine("\nAdded\n");
             Registo r = new Registo("Added",a, a.Quantity);
             Registos.InsertRecord(r);
 
@@ -69,17 +68,15 @@ namespace Dados
             {
                 Artigo.ShowArtigo(a);
             }
-            Console.WriteLine("\n\n Models Available: " + artigos.Count);
+            //Console.WriteLine("\n\n Models Available: " + artigos.Count);
         }
 
         /// <summary>
         /// Funçao que perocura um artigo na lista pelo seu ID
         /// </summary>
         /// <returns></returns>
-        public static Artigo SearchArtigoId()
+        public static Artigo SearchArtigoId(int id)
         {
-            Console.WriteLine(" ID: ");
-            int id = int.Parse(Console.ReadLine());
             foreach (Artigo x in artigos)
             {
                 if (x.Id == id)
@@ -100,7 +97,7 @@ namespace Dados
             stats.Add(spent);
             stats.Add(Earn);
             return stats;
-            //Console.WriteLine("Total\n----------------\nSpent: " + Spent + "\nEarn: " + Earn + "\n Profit: " + (Earn - Spent));
+            
         }
 
         /// <summary>

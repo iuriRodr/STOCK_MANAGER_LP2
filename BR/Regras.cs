@@ -20,13 +20,13 @@ namespace BR
 
         public static List<double> ShowStat()
         {
-
+         
             return Artigos.ShowStats();
         }
 
-        public static Artigo Search()
+        public static Artigo Search(int id)
         {
-           return Artigos.SearchArtigoId();
+           return Artigos.SearchArtigoId(id);
 
         }
 

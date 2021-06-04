@@ -55,7 +55,9 @@ namespace Menus
 
                     case 2:
                         Console.Clear();
-                        a = Regras.Search();
+                        Console.WriteLine(" ID: ");
+                        int ida = int.Parse(Console.ReadLine());
+                        a = Regras.Search(ida);
                         Console.Clear();
                         if (a != null)
                         {
@@ -79,27 +81,24 @@ namespace Menus
                         Console.Clear();
                         double earn = 0;
                         double spent = 0;
-
-                        List<double> aux1 =  new List<double>(Regras.ShowStat());
-
                         int i = 0;
-                        foreach(double x in aux1)
-                        {
-                            if (i == 0)
-                            {
-                                spent = x;
-                            }
-                            else if(i==1)
-                            {
-                                spent = x;
 
-                            }
-                            else
+                        List<double> stats = new List<double>(Regras.ShowStat());
+                        foreach (double x in stats)
+                        {
+                          
+                            if(i == 0)
                             {
-                                break;
+                                spent = x;
+                            }
+                            else if(i == 1)
+                            {
+                                earn = x;
                             }
                             i++;
                         }
+
+                      
                         Console.WriteLine("Total\n----------------\nSpent: " + spent + "\nEarn: " + earn + "\n Profit: " + (earn - spent));
                         Console.ReadKey();
                         Console.Clear();
@@ -126,7 +125,9 @@ namespace Menus
 
                     case 6:
                         Console.Clear();
-                        a = Regras.Search();
+                        Console.WriteLine(" ID: ");
+                        int id1 = int.Parse(Console.ReadLine());
+                        a = Regras.Search(id1);
                         Console.Clear();
                         if (a != null)
                         {
