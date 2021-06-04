@@ -2,6 +2,7 @@
 using Dados;
 using BO;
 using System.Collections.Generic;
+using System;
 
 namespace BR
 {
@@ -17,9 +18,10 @@ namespace BR
             Artigos.ShowArtigos();
         }
 
-        public static void ShowStat(Artigo a)
+        public static List<double> ShowStat()
         {
-            Artigos.ShowStats(a);
+
+            return Artigos.ShowStats();
         }
 
         public static Artigo Search()

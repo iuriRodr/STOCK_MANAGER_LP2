@@ -77,9 +77,30 @@ namespace Menus
 
                     case 4:
                         Console.Clear();
-                        //Regras.ShowStat(a);
-                        Console.WriteLine("Total\n----------------\nSpent: " + Artigos.Spent + "\nEarn: " + Artigos.Earn + "\n Profit: " + (Artigos.Earn - Artigos.Spent));
-                      
+                        double earn = 0;
+                        double spent = 0;
+
+                        List<double> aux1 =  new List<double>(Regras.ShowStat());
+
+                        int i = 0;
+                        foreach(double x in aux1)
+                        {
+                            if (i == 0)
+                            {
+                                spent = x;
+                            }
+                            else if(i==1)
+                            {
+                                spent = x;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
+                            i++;
+                        }
+                        Console.WriteLine("Total\n----------------\nSpent: " + spent + "\nEarn: " + earn + "\n Profit: " + (earn - spent));
                         Console.ReadKey();
                         Console.Clear();
                         break;
