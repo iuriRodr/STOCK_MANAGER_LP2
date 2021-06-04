@@ -94,11 +94,10 @@ namespace Dados
         ///// <summary>
         ///// Funçao que mostra as estatisticas das vendas ( o total gasto, o total vendido e o lucro)
         ///// </summary>
-        public static void ShowStats(object a)
-        {
-            Console.WriteLine("Total\n----------------\nSpent: " + Spent + "\nEarn: " + Earn + "\n Profit: " + (Earn - Spent));
-        }
-
+        //public static void ShowStats(object a)
+        //{
+        //    Console.WriteLine("Total\n----------------\nSpent: " + Spent + "\nEarn: " + Earn + "\n Profit: " + (Earn - Spent));
+        //}
 
         /// <summary>
         /// Funçao que remove um artigo da lista

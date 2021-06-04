@@ -8,6 +8,8 @@ using System;
 using BO;
 using BR;
 using Excecoes;
+using Dados;
+using System.Collections.Generic;
 
 namespace Menus
 {
@@ -75,14 +77,28 @@ namespace Menus
 
                     case 4:
                         Console.Clear();
-                        Regras.ShowStat(a);           
+                        //Regras.ShowStat(a);
+                        Console.WriteLine("Total\n----------------\nSpent: " + Artigos.Spent + "\nEarn: " + Artigos.Earn + "\n Profit: " + (Artigos.Earn - Artigos.Spent));
+                      
                         Console.ReadKey();
                         Console.Clear();
                         break;
 
                     case 5:
                         Console.Clear();
-                        Regras.ShowRecord();
+                        List<Registo> aux = new List<Registo>(Regras.ShowRecord());
+                        foreach (Registo r in Regras.ShowRecord())
+                        {
+                                Console.WriteLine("- - - - - - - - - - - - - -");
+                                Console.WriteLine("Info : " + r.Info);
+                                Console.WriteLine("State : " + r.State);
+                                Console.WriteLine("Resell : " + r.Resell);
+                                Console.WriteLine("Retail : " + r.Retail);
+                                Console.WriteLine("Quantity : " + r.Quantity);
+                                Console.WriteLine("Date : " + r.Date);
+                                Console.WriteLine("- - - - - - - - - - - - - -");
+                        }
+                        //Regras.ShowRecord();
                         Console.ReadKey();
                         Console.Clear();
                         break;

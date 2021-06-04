@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Dados;
 using BO;
+using System.Collections.Generic;
 
 namespace BR
 {
@@ -40,9 +37,10 @@ namespace BR
         {
             Artigos.LoadData();
         }
-        public static void ShowRecord()
+        public static List<Registo> ShowRecord()
         {
-            Registos.ShowRecords();
+            //Registos.ShowRecords();
+            return Registos.ShowRecords();
         }
 
         public static bool InsertRecor(Registo a)

@@ -4,7 +4,6 @@
 //
 //
 
-
 using System;
 using Menus;
 using BR;
@@ -20,6 +19,7 @@ namespace BO
             Regras.LoadAllData();
 
             MenuP.TextMenu1();
+            
             op = int.Parse(Console.ReadLine());
             MenuP.OpMenu(op);
 

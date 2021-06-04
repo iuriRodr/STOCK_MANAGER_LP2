@@ -63,6 +63,12 @@ namespace Dados
             set => resell = value;
         }
 
+        public int Quantity
+        {
+            get => quantity;
+            set => quantity = value;
+        }
+
         public DateTime Date
         {
             get => date;
@@ -71,22 +77,7 @@ namespace Dados
         #endregion
 
 
-        /// <summary>
-        /// Funçao que Mostra o registo de um artigo
-        /// </summary>
-        /// <param name="r"></param>
-        public static void ShowRecord(Registo r)
-        {
-            Console.WriteLine("- - - - - - - - - - - - - -");
-            Console.WriteLine("Info : " + r.Info);
-            Console.WriteLine("State : " + r.state);
-            Console.WriteLine("Resell : " + r.Resell);
-            Console.WriteLine("Retail : " + r.Retail);
-            Console.WriteLine("Quantity : " + r.quantity);
-            Console.WriteLine("Date : " + r.Date);
-            Console.WriteLine("- - - - - - - - - - - - - -");
-
-        }
+      
     }
 
     public class Registos
@@ -122,12 +113,10 @@ namespace Dados
         /// <summary>
         /// Funçao que percorre a lista e mostra todos os registos usando a funçao (Registo.ShowRecord)
         /// </summary>
-        public static void ShowRecords()
+        public static List<Registo> ShowRecords()
         {
-            foreach (Registo r in registos)
-            {
-                Registo.ShowRecord(r);
-            }
+            List<Registo> temp = new List<Registo>(registos);
+            return temp;
         }
 
 
