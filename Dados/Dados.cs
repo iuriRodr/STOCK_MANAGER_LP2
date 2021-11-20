@@ -1,4 +1,10 @@
-﻿using System;
+//Trabalho prático LP 2
+//Iúri Rodrigues 21159
+//
+//
+//
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
